@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Flight Delay Prediction</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">Flight Delay Predictor</div>
+        <form action="/" method="POST">
+            <div class="form">
+
+               <div class="inputfield">
+    <label for="Date">Date</label>
+    <input class="date" type="text" name="Date" required>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+
+  <label for="OPUNIQUECARRIER">OP UNIQUE CARRIER</label>
+  <select name="OPUNIQUECARRIER" id="OPUNIQUECARRIER">
+    <option value="0" selected>MQ</option>
+    <option value="1">OO</option>
+    <option value="2">B6</option>
+    <option value="3">YX</option>
+    <option value="4">WN</option>
+    <option value="5">G4</option>
+    <option value="6">YV</option>
+    <option value="7">9E</option>
+    <option value="8">F9</option>
+    <option value="9">HA</option>
+    <option value="10">OH</option>
+    <option value="11">NK</option>
+    <option value="12">AS</option>
+    <option value="13">DL</option>
+    <option value="14">AA</option>
+    <option value="15">UA</option>
+    <option value="16">EV</option>
+  </select>
+
+  <br>
+  <br>  <br>  <br>  <br>
+  <label for="ORIGIN">ORIGIN</label>
+  <select name="ORIGIN" id="ORIGIN">
+    <option value="0" selected>ATL</option>
+    <option value="1" selected>ORD</option>
+    <option value="2" selected>Other</option>
+  </select>
+
+  <br>  <br>  <br>  <br>
+
+  <label for="DEST">DEST</label>
+  <select name="DEST" id="DEST">
+    <option value="0" selected>ATL</option>
+    <option value="1" selected>ORD</option>
+    <option value="2" selected>Other</option>
+  </select>
+<br>  <br>  <br>  <br>
+  <div class="DEPTIME">
+    <label for="DEPTIME">DEP TIME</label>
+    <input class="DEPTIME" type="text" name="DEPTIME" required>
+</div>
+<br>  <br>  <br>  <br>
+  <div class="ARRTIME">
+    <label for="ARRTIME">ARR TIME</label>
+    <input class="ARRTIME" type="text" name="ARRTIME" required>
+</div>
+<br>  <br>  
+  <div class="DISTANCE">
+    <label for="DISTANCE">DISTANCE</label>
+    <input class="DISTANCE" type="DISTANCE" name="DISTANCE" required>
+</div>
+<br>
+<div class="inputfield">
+  <input class="btn" type="submit" value="P.redict">
+</div>
+</div>
+        </form>
+
+        <div class="result">
+            {% if pred_value != 0 %}
+            <p>Flight delay ?:{{pred_value}}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Flight Delay Prediction</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif}
+
+.body{
+    background-color: #858585;
+
+}
+.button {
+  background-color: #f44336;
+  
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  
+}
+x {border-style: solid;}
+
+
+* {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+  
+
+    inputfield {
+        width: 1000px;
+        height: 200px;
+        box-shadow: 16px 14px 20px #0000008c;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    inputfield::before{
+        content: "";
+        background-image: conic-gradient(
+            #ffffff 20deg,
+            transparent 180deg
+        );
+        width: 500%;
+        height: 150%;
+        position: absolute;
+        animation: rotate 2s linear infinite;
+    }
+    inputfield::after{
+        content: "Flight Delay Predictor";
+        width: 1900px;
+        height: 190px;
+        background: #302c2c;
+        position: absolute;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #f1f1f1;
+        font-size: 50px;
+        letter-spacing: 5px;
+        box-shadow: inset 20px 20px 20px #0000008c;
+    }
+    @keyframes rotate {
+        0%{
+            transform: rotate(0deg);
+        }
+        100%{
+            transform: rotate(-360deg);
+        }
+    }
+
+</style>
+</head>
+
+<body class="w3-light-grey" style="background-color:#0000008c; ">
+  <div class="w3-row-padding">
+    <div class="w3-third">
+    
+      <div class="w3-white w3-text-grey w3-card-4">
+        <div class="w3-container">
+
+
+          <p><form action="/" method="POST">
+            <div class="form">
+
+               <div class="inputfield">
+    <label for="Date"><h2>Date</h2></label>
+    <input class="date" type="text" name="Date" required>
+  </div>
+  <br>
+
+  <label for="OPUNIQUECARRIER"><h2> UNIQUE CARRIER</h2></label>
+  <select name="OPUNIQUECARRIER" id="OPUNIQUECARRIER" style="color:#ff0052 ; font-size: 25px" >
+    <option value="0" selected>MQ</option>
+    <option value="1">OO</option>
+    <option value="2">B6</option>
+    <option value="3">YX</option>
+    <option value="4">WN</option>
+    <option value="5">G4</option>
+    <option value="6">YV</option>
+    <option value="7">9E</option>
+    <option value="8">F9</option>
+    <option value="9">HA</option>
+    <option value="10">OH</option>
+    <option value="11">NK</option>
+    <option value="12">AS</option>
+    <option value="13">DL</option>
+    <option value="14">AA</option>
+    <option value="15">UA</option>
+    <option value="16">EV</option>
+  </select>
+
+  <br>
+
+  <label for="ORIGIN"><h2> ORIGIN</h2> </label>
+  <select name="ORIGIN" id="ORIGIN" style="color:hsl(12, 98%, 46%) ; font-size: 25px">
+    <option value="0" selected>ATL</option>
+    <option value="1" selected>ORD</option>
+    <option value="2" selected>Other</option>
+  </select>
+
+  <br> 
+
+  <label for="DEST"><h2> DEST</h2> </label>
+  <select name="DEST" id="DEST" style="color:#ff0052 ; font-size: 25px">
+    <option value="0" selected>ATL</option>
+    <option value="1" selected>ORD</option>
+    <option value="2" selected>Other</option>
+  </select>
+<br>  
+  <div class="DEPTIME">
+    <label for="DEPTIME"><h2> DEP TIME</h2></label>
+    <input class="DEPTIME" type="text" name="DEPTIME" required>
+</div>
+<br>  
+  <div class="ARRTIME">
+    <label for="ARRTIME"><h2> ARR TIME </h2></label>
+    <input class="ARRTIME" type="text" name="ARRTIME" required>
+</div>
+<br>    
+  <div class="DISTANCE">
+    <label for="DISTANCE"><h2> DISTANCE</h2></label>
+    <input class="DISTANCE" type="DISTANCE" name="DISTANCE" required>
+</div>
+ 
+
+<div class="inputfield" style="color:#a6ff00">
+  <input class="button" type="submit" value="Predict">
+</div>
+
+</div>
+        </form></p>
+   
+          
+          <br>
+        </div>
+
+      </div><br>
+    </div>
+    <div class="w3-twothird">
+    
+     <inputfield>
+	<h1 style="color:red ; font-size: 3.875em;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Flight Delay Predictor</h1>
+        </inputfield>
+    <h1 style="color:rgb(2, 0, 0); font-size: 8.875em; ">
+  <br>
+<m>
+    <div class="result">
+        <!-- {% if pred_value != 0 %}
+       <h1><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{pred_value}}</p></h1>
+        {% endif %} -->
+
+        {% if Date != 0 %}
+       <h3>Flight Date    :- {{Date}} </h3>
+       <h3>UNIQUE CARRIER :- {{OPUNIQUECARRIER}} </h3>
+       <h3>ORIGIN         :- {{ORIGIN}}</h3>
+       <h3>DEST           :- {{DEST}} </h3>
+       <h3>DEPTIME        :- {{DEPTIME}} </h3>
+       <h3>ARRTIME        :- {{ARRTIME}} </h3>
+       <h3>DISTANCE       :- {{DISTANCE}} </h3>
+       <h1>Result         :- {{pred_value}}</h1>
+       
+        {% endif %}
+    </div>
+</h1>
+</m>
+    </div>
+  </div>
+</div>
+
+<footer class="w3-container w3-teal w3-center w3-margin-top">
+  <p>Find me on social media.</p>
+  <i class="fa fa-facebook-official w3-hover-opacity"></i>
+  <i class="fa fa-instagram w3-hover-opacity"></i>
+  <i class="fa fa-snapchat w3-hover-opacity"></i>
+  <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+  <i class="fa fa-twitter w3-hover-opacity"></i>
+  <i class="fa fa-linkedin w3-hover-opacity"></i>
+  <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+</footer>
+
+</body>
+</html>
